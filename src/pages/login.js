@@ -202,12 +202,14 @@ function SignIn(props) {
   return (
     <div
       style={{
-        backgroundImage: `url('/urban/himachal_bg.jpeg')`, // Reference the image in the public folder
+        // backgroundImage: `url('/urban/farmer.jpg')`, // Reference the image in the public folder
         backgroundSize: "cover",
         backgroundPosition: "center",
         width: "100%",
         height: "100%", // Set the desired height
-        backgroundColor: "rgba(0, 0, 0, 0.1)", // 0.5 opacity (adjust as needed)
+        // backgroundColor: "rgba(0, 0, 0, 0.1)", // 0.5 opacity (adjust as needed)
+        backgroundColor: "white", // 0.5 opacity (adjust as needed)
+
       }}
     >
       <div class="backdrop"></div>{" "}

@@ -15,18 +15,13 @@ export default function Home() {
   const token = getToken();
 
   const { ulb, token: userToken, userName } = token || {};
-
-
-
-  console.log(token, "asljkdnakldasdasdasdadksl")
-
   return (
     <div>
-      <div className="flex w-screen h-screen" >
-        <div className="w-screen ">
+      {/* <div className="flex w-screen h-screen" > */}
+        {/* <div className="w-screen "> */}
           <Landing />
-        </div>
-      </div>
+        {/* </div> */}
+      {/* </div> */}
 
     </div>
   )
