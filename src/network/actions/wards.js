@@ -2,6 +2,7 @@
 import axios from "../api";
 
 import { WARD_SUCCESS, WARD_FALIURE } from "../action_types";
+import { decryptData, encryptDataGet } from "../../utils/encryptDecrypt";
 // Action Creators
 export const fetchWardSuccess = (data) => ({
   type: WARD_SUCCESS,
@@ -16,9 +17,11 @@ export const fetchWardFailure = (error) => ({
 // Async Action to Fetch Data
 export const onWardList = (id) => {
   return async (dispatch) => {
+    
     try {
-      const response = await axios.get(`getWards?municipalId=${id}`, {});
-      dispatch(fetchWardSuccess(response.data));
+      const response = await axios.get(`/master-data?status=${encryptDataGet(`true`)}&parentId=${encryptDataGet(JSON.stringify(id))}&masterName=${encryptDataGet("panchayat")}`, {});
+      let responseData = decryptData(response?.data?.data)
+      dispatch(fetchWardSuccess(responseData));
     } catch (error) {
       dispatch(fetchWardFailure(error));
     }

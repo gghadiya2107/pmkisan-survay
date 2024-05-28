@@ -2,6 +2,8 @@
 import axios from "../api";
 
 import { DISTRICT_SUCCESS, DISTRICT_FALIURE } from "../action_types";
+import {  decryptData, encryptDataGet } from "../../utils/encryptDecrypt";
+
 // Action Creators
 export const fetchDistrictSuccess = (data) => ({
   type: DISTRICT_SUCCESS,
@@ -17,9 +19,10 @@ export const fetchDistrictFailure = (error) => ({
 export const onDistrict = () => {
   return async (dispatch) => {
     try {
-      const response = await axios.get(`/getDistricts`, {});
-      // console.log(response, "dashboard response")
-      dispatch(fetchDistrictSuccess(response.data));
+      const response = await axios.get(`/master-data?status=${encryptDataGet(`true`)}&masterName=${encryptDataGet("district")}`, {});
+      console.log(response, "dashboard response")
+      let responseData = decryptData(response?.data?.data)
+      dispatch(fetchDistrictSuccess(responseData));
     } catch (error) {
       dispatch(fetchDistrictFailure(error));
     }

@@ -3,7 +3,7 @@ import { LOGIN_SUCCESS, LOGIN_FAILURE } from "../action_types";
 
 
 const initialState = {
-  data: [],
+  data: {},
   error: null,
 };
 

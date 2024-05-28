@@ -2,6 +2,7 @@
 import axios from "../api";
 
 import { MUNICIPALITY_SUCCESS, MUNICIPALITY_FALIURE } from "../action_types";
+import { decryptData, encryptDataGet } from "../../utils/encryptDecrypt";
 // Action Creators
 export const fetchMunicipalitySuccess = (data) => ({
   type: MUNICIPALITY_SUCCESS,
@@ -18,10 +19,12 @@ export const onMunicipalityList = (id) => {
   return async (dispatch) => {
     try {
       const response = await axios.get(
-        `/getMunicipalities?districtCode=${id}`,
+        `/master-data?status=${encryptDataGet(`true`)}&parentId=${encryptDataGet(JSON.stringify(id))}&masterName=${encryptDataGet("block")}`,
         {}
       );
-      dispatch(fetchMunicipalitySuccess(response.data));
+      let responseData = decryptData(response?.data?.data)
+      console.log('responseData', responseData)
+      dispatch(fetchMunicipalitySuccess(responseData));
     } catch (error) {
       dispatch(fetchMunicipalityFailure(error));
     }

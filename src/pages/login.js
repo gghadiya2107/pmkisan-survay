@@ -59,7 +59,7 @@ function Copyright(props) {
 
 function SignIn(props) {
   const dispatch = useDispatch();
-  const data = useSelector((state) => state.login);
+  const {data} = useSelector((state) => state.login);
 
   const router = useRouter();
   const childRef = useRef();
@@ -95,19 +95,14 @@ function SignIn(props) {
 
   useEffect(() => {
     if (loginCalled) {
-      const { data: user_data } = data || {};
-
-      const { token } = user_data || {};
 
       setLoginCalled(false);
-
-      if (user_data.data) {
+      if (data?.id) {
         handleClick();
-        console.log("user_data.data", user_data.data);
-        saveToken(user_data.data);
+        saveToken(data);
         setMessage({ message: "Access Granted", type: "success" });
         router.push("/dashboard");
-      } else if (data?.error?.message.includes("401")) {
+      } else if (data?.length == 0) {
         handleClick();
         setMessage({ message: "Access denied", type: "error" });
       }
@@ -116,7 +111,7 @@ function SignIn(props) {
 
   useEffect(() => {
     let username = getUserName();
-    let ulb = getUlb();
+    let ulb = null
 
     if (username) {
       username = JSON.parse(username);

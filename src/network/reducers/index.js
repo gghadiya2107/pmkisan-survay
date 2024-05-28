@@ -34,6 +34,7 @@ import cscSurveyList from "./cscSurveyList"
 import cscUserList from "./cscUserList"
 
 import cscReportDownload from "./cscReportDownload"
+import village_reducer from "./villages";
 
 const rootReducer = combineReducers({
   login,
@@ -51,6 +52,7 @@ const rootReducer = combineReducers({
   district_reducer,
   municipality_reducer,
   ward_reducer,
+  village_reducer,
   familyDetail,
   familiesList,
   familiesDetailApi,

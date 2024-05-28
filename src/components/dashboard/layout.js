@@ -82,7 +82,7 @@ function Layout(props) {
     }
     console.log("Roles===", getRoles());
     if (getRoles()) {
-      globalRole = getRoles();
+      globalRole = JSON.parse(getRoles())?.map(v => v?.name)?.[0];
     }
 
     if (globalRole) {
@@ -123,7 +123,7 @@ function Layout(props) {
       </Toolbar>
 
       <List style={{ marginTop: 20 }}>
-        {getOptionsForRole(role).map((option, index) => (
+        {getOptionsForRole(role)?.map((option, index) => (
           <ListItem
             key={option.text}
             disablePadding
@@ -170,6 +170,7 @@ function Layout(props) {
 
   // Define function to get options based on user role
   function getOptionsForRole(role) {
+    console.log("role",role)
     switch (role) {
       case "Admin":
         return [
