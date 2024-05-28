@@ -61,7 +61,6 @@ export default function Filters({ onChange }) {
       const municipalityDetail = JSON.parse(getPanchayat());
       const ulb = JSON.parse(getBlock());
       const villageData = JSON.parse(getVillage());
-      console.log('villageData', villageData)
       // const { districtDetail, municipalityDetail, ulb, roles, userName } =
       //   globalUser || {};
       let district_object = {
@@ -98,9 +97,8 @@ export default function Filters({ onChange }) {
         setSelectDisabledMunicipality(true);
       }
 
-      console.log("ULB:Data", ulb);
 
-      if (ulb) {
+      // if (ulb) {
         let ward_object = {
           label: ulb.blockName + " (" + ulb.lgdCode + ")",
           value: ulb.lgdCode,
@@ -109,34 +107,33 @@ export default function Filters({ onChange }) {
 
         setward(ward_object);
         setSelectDisabledWard(true);
-      }
-      if (villageData) {
-        let ward_object = {
+      // }
+      // if (villageData) {
+        let village_object = {
           label: villageData.villageName,
           value: villageData.id,
           id: villageData.id,
         };
 
-        setvillage(ward_object);
+        setvillage(village_object);
         setSelectDisableVillage(true);
-      }
+      // }
 
-      if (roles[0] == "Surveyor") {
-        setWardCalled(true);
-        dispatch(onWardListSurveyor(municipality_object.value, userName));
-        setSelectDisabledWard(false);
-      } else {
-        setWardCalled(true);
-        dispatch(onWardList(municipality_object.value));
-      }
+      // if (roles[0] == "Surveyor") {
+      //   setWardCalled(true);
+      //   dispatch(onWardListSurveyor(municipality_object.value, userName));
+      //   setSelectDisabledWard(false);
+      // } else {
+      //   setWardCalled(true);
+      //   dispatch(onWardList(municipality_object.value));
+      // }
 
       onChange({
         district: district_object.code,
         municipal: municipality_object.value,
         ward: ward_object.value,
+        village  : village_object.value, 
       });
-
-      // console.log(districtDetail, municipalityDetail, "jnkdajdakdjkad");
     } catch (e) {
       
       console.log("called district", e);

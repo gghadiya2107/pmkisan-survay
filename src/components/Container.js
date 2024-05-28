@@ -135,35 +135,13 @@ function CustomCellRenderer(params) {
 }
 
 const Dashboard = () => {
-  // const {
-  //   totalFamilyCount,
-  //   totalMemberCount,
-  //   wardFamilyCount,
-  //   wardMemberCount,
-  // } = props.dashboardData || {};
 
-  // const { wardId } = props || 0;
-
-  // const [search, setSearch] = useState("");
-  // const [checked, setChecked] = React.useState([0]);
-  // const [selectedItems, setSelectedItems] = useState([]);
-  // const [familyList, setfamilyList] = useState([]);
-  // const [selectedFamily, setselectedFamily] = useState({});
-  // const [detailCalled, setdetailCalled] = useState(false);
-  // const [isCardClicked, setCardClicked] = useState(false);
-  // const [showModal, setShowModal] = useState(false);
-  // const [page, setPage] = React.useState(0);
-  // const [rowsPerPage, setRowsPerPage] = React.useState(10);
-  // const [totalPage, setTotalPage] = useState(0);
-
-  //const familiesList = useSelector((state) => state.familiesList);
-  //const familiesDetailApi = useSelector((state) => state.familiesDetailApi);
-  //const showLoader = useSelector((state) => state.showLoader);
 
   /**Handle Filters and Call the External Service */
   const [selectedDistrict, setSelectedDistrict] = useState(null);
   const [selectedMunicipality, setSelectedMunicipality] = useState(null);
   const [selectedWard, setSelectedWard] = useState(null);
+  const [selectDisabledVillage, setSelectDisabledVillage] = useState(null);
 
   /**
    * Dashboard Object
@@ -180,13 +158,15 @@ const Dashboard = () => {
     (state) => state.dashboardFilterRedux
   );
 
-  const handleFilterChange = ({ district, municipal, ward }) => {
+  const handleFilterChange = ({ district, municipal, ward,village }) => {
     setSelectedDistrict(district);
     setSelectedMunicipality(municipal);
     setSelectedWard(ward);
+    setSelectDisabledVillage(village)
 
-    if (district || municipal || ward) {
-      const queryParams = createQueryParams(district, municipal, ward);
+    console.log('allDataa', {district , municipal , ward , village})
+    if (district || municipal || ward || village) {
+      const queryParams = createQueryParams(district, municipal, ward, village);
       dispatch(onDashboarFilters(queryParams));
     }
   };
@@ -194,7 +174,8 @@ const Dashboard = () => {
   const createQueryParams = (
     selectedDistrict,
     selectedMunicipality,
-    selectedWard
+    selectedWard,
+    selectedVillage
   ) => {
     const queryParams = {};
     queryParams.districtId =
@@ -209,7 +190,8 @@ const Dashboard = () => {
       selectedMunicipality.value !== undefined
         ? selectedMunicipality.value
         : selectedMunicipality;
-    if (selectedWard) queryParams.wardId = selectedWard.value;
+    if (selectedWard) queryParams.wardId = selectedWard;
+    if (selectedVillage) queryParams.villageId = selectedVillage;
     console.log("queryParams", queryParams);
     return queryParams;
   };
@@ -217,13 +199,15 @@ const Dashboard = () => {
   const createQueryParamsDefault = (
     selectedDistrict,
     selectedMunicipality,
-    selectedWard
+    selectedWard,
+    selectedVillage
   ) => {
     const queryParams = {};
 
     if (selectedDistrict) queryParams.districtId = selectedDistrict;
     if (selectedMunicipality) queryParams.municipalId = selectedMunicipality;
     if (selectedWard) queryParams.wardId = selectedWard;
+    if (selectedVillage) queryParams.villageId = selectedVillage;
 
     return queryParams;
   };
