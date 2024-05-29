@@ -47,7 +47,6 @@ export default function Filters({ onChange }) {
   const dispatch = useDispatch();
 
   const district_reducer = useSelector((state) => state.district_reducer?.data);
-  console.log('district_reducer', district_reducer)
   const municipality_reducer = useSelector(
     (state) => state.municipality_reducer?.data
   );
@@ -350,7 +349,7 @@ console.log('village_reducer', village_reducer)
           >
             Block{" "}
           </InputLabel>
-
+         
           <Select
             styles={selectStyles}
             closeMenuOnSelect={true}
@@ -368,7 +367,6 @@ console.log('village_reducer', village_reducer)
           >
             Panchayat{" "}
           </InputLabel>
-
           <Select
             styles={selectStyles}
             closeMenuOnSelect={true}
@@ -377,6 +375,8 @@ console.log('village_reducer', village_reducer)
             onChange={handleWardChange}
             isDisabled={selectDisabledWard}
           />
+        
+         
         </Grid>
         <Grid item xs={3}>
           <InputLabel

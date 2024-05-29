@@ -20,7 +20,7 @@ const secretKey = process.env.NEXT_PUBLIC_SECRET_KEY_ENCRYPT_DECRYPT;
 export function decryptData(urlEncodedEncrypted) {
 
     try {
-console.log('urlEncodedEncrypted', urlEncodedEncrypted)
+// console.log('urlEncodedEncrypted', urlEncodedEncrypted)
         const bytes = CryptoJS.AES.decrypt(urlEncodedEncrypted, secretKey);
         const originalText = bytes.toString(CryptoJS.enc.Utf8);
 
@@ -28,7 +28,7 @@ console.log('urlEncodedEncrypted', urlEncodedEncrypted)
 
         return JSON.parse(originalText);
     } catch (e) {
-        console.log(e, "asjkbndjbhsadbjhasd");
+        // console.log(e, "asjkbndjbhsadbjhasd");
     }
 }
 

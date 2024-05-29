@@ -33,7 +33,7 @@ const Hero = () => {
               paddingBottom: "15px",
             }}
           >
-            Field Survay - Himachal Pradesh Farmar Database
+            Field Survey - Himachal Pradesh Farmer Database
           </Typography>
           <Typography
             style={{
@@ -48,11 +48,11 @@ const Hero = () => {
             demographic information for government and civic planning in your
             city.
           </Typography>
-          <Link href="/apk/SurveyV1.10_P.apk" download>
+          <Link href="/apk/Survey1.12.apk" download>
             <Button
               variant="contained"
-              color="primary"
-              style={{ marginLeft: 5 }}
+              // color="primary"
+              style={{ marginLeft: 5 , background : "#75A47F"}}
             >
               Download the Application
             </Button>

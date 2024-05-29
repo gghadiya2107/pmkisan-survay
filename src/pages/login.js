@@ -255,7 +255,7 @@ function SignIn(props) {
               >
                 Welcome to{" "}
                 <Box sx={{ color: "#6366F1" }} target="_blank">
-                Field Survay - Himachal Pradesh Farmar Database
+                Field Survey - Himachal Pradesh Farmer Database
                 </Box>
               </Typography>
 

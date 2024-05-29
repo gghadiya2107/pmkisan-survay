@@ -19,6 +19,7 @@ export const onCSCSurveyList = (queryParams) => {
       const response = await axios.get(`/report/survey/csc`, {
         params: queryParams,
       });
+      
       dispatch(fetchCSCListSuccess(response.data));
     } catch (error) {
       dispatch(fetchCSCListFailure(error));

@@ -57,7 +57,7 @@ const SubSection = () => {
       <TimelineItem>
         <TimelineSeparator>
           <TimelineDot className='timeLine'>01</TimelineDot>   
-          <TimelineConnector style={{color: "#074465"}}/>
+          <TimelineConnector style={{backgroundColor: "#75A47F"}}/>
         </TimelineSeparator>
         <TimelineContent>
         <Grid container spacing={5} style={{
@@ -91,7 +91,7 @@ const SubSection = () => {
 
                     }}>
                         <img src={'/urban/images/steps/step1.jpg'} alt="My Team" style={{
-                            height: 500,
+                            height: 350,
                             marginBottom : 50
                         }} />
                     </Grid>
@@ -103,7 +103,7 @@ const SubSection = () => {
       <TimelineItem>
         <TimelineSeparator>
         <TimelineDot  className='timeLine'>02</TimelineDot>   
-        <TimelineConnector />
+        <TimelineConnector style={{backgroundColor: "#75A47F"}}/>
         </TimelineSeparator>
         <TimelineContent>  <Grid container spacing={5} style={{
                     display: 'flex',
@@ -135,7 +135,7 @@ The survey application offers multiple convenient options for conducting data co
 
                     }}>
                         <img src={'/urban/images/steps/step1.jpg'} alt="My Team" style={{
-                            height: 500,
+                            height: 350,
                             marginBottom : 50
 
                         }} />
@@ -179,7 +179,7 @@ During the survey, it is essential to capture a range of key data elements to en
 
                     }}>
                         <img src={'/urban/images/steps/step1.jpg'} alt="My Team" style={{
-                            height: 500,
+                            height: 350,
                             marginBottom : 50
 
                         }} />

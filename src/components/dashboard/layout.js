@@ -117,8 +117,8 @@ function Layout(props) {
       <Toolbar>
         <Image src={AppLogo} width={65} height={50} alt="Logo" />
         <Typography variant="h6" noWrap component="div" marginLeft={2}>
-          Family Survey
-          <br /> (Urban)
+        Field Survey
+                  {/* <br /> (Urban) */}
         </Typography>
       </Toolbar>
 
@@ -170,7 +170,6 @@ function Layout(props) {
 
   // Define function to get options based on user role
   function getOptionsForRole(role) {
-    console.log("role",role)
     switch (role) {
       case "Admin":
         return [
@@ -187,6 +186,13 @@ function Layout(props) {
           },
         ];
       case "Surveyor":
+        return [
+          { text: "Dashboard", route: "dashboard" },
+          { text: "Survey Summary", route: "survey_summary" },
+          { text: "View Data", route: "view_edit_data" }
+         
+        ];
+      case "SuperAdmin":
         return [
           { text: "Dashboard", route: "dashboard" },
           { text: "Survey Summary", route: "survey_summary" },

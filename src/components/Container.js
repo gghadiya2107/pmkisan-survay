@@ -141,7 +141,7 @@ const Dashboard = () => {
   const [selectedDistrict, setSelectedDistrict] = useState(null);
   const [selectedMunicipality, setSelectedMunicipality] = useState(null);
   const [selectedWard, setSelectedWard] = useState(null);
-  const [selectDisabledVillage, setSelectDisabledVillage] = useState(null);
+  const [selectedVillage, setSelectDisabledVillage] = useState(null);
 
   /**
    * Dashboard Object
@@ -158,6 +158,8 @@ const Dashboard = () => {
     (state) => state.dashboardFilterRedux
   );
 
+  console.log('dashboardFilterState', dashboardFilterState)
+
   const handleFilterChange = ({ district, municipal, ward,village }) => {
     setSelectedDistrict(district);
     setSelectedMunicipality(municipal);
@@ -166,7 +168,8 @@ const Dashboard = () => {
 
     console.log('allDataa', {district , municipal , ward , village})
     if (district || municipal || ward || village) {
-      const queryParams = createQueryParams(district, municipal, ward, village);
+      const queryParams = createQueryParams(district, municipal?.value, ward?.value, village?.value);
+      console.log('queryParams', queryParams)
       dispatch(onDashboarFilters(queryParams));
     }
   };
@@ -190,8 +193,22 @@ const Dashboard = () => {
       selectedMunicipality.value !== undefined
         ? selectedMunicipality.value
         : selectedMunicipality;
-    if (selectedWard) queryParams.wardId = selectedWard;
-    if (selectedVillage) queryParams.villageId = selectedVillage;
+    queryParams.wardId =
+      selectedWard &&
+      selectedWard.value !== null &&
+      selectedWard.value !== undefined
+        ? selectedWard.value
+        : selectedWard;
+    queryParams.villageId =
+      selectedVillage &&
+      selectedVillage.value !== null &&
+      selectedVillage.value !== undefined
+        ? selectedVillage.value
+        : selectedVillage;
+   
+    // if (selectedMunicipality) queryParams.municipalId = selectedMunicipality;
+    // if (selectedWard) queryParams.wardId = selectedWard;
+    // if (selectedVillage) queryParams.villageId = selectedVillage;
     console.log("queryParams", queryParams);
     return queryParams;
   };
@@ -246,7 +263,7 @@ const Dashboard = () => {
         selectedMunicipality,
         selectedWard
       );
-      dispatch(onDashboarFilters(queryParams));
+      // dispatch(onDashboarFilters(queryParams));
     }
   }, [
     dispatch,
@@ -262,14 +279,14 @@ const Dashboard = () => {
    */
   useEffect(() => {
     if (dashboardFilterState?.data) {
-      const { data, status, message } = dashboardFilterState.data || {};
-      if (status === "OK" && message === "SUCCESS") {
+      // const { data, status, message } = dashboardFilterState.data || {};
+      if (dashboardFilterState?.data) {
         // Set the parsed data to state variables
-        setSurveyInfo(data.surveyInfoList);
-        setVerificationInfoList(data.verificationInfoList);
-        setAadhaarEkycInfoList(data.aadhaarEkycInfoList);
-        setEconomicCategoryInfoList(data.economicCategoryInfoList);
-        setRetainInInfoList(data.retainInInfoList);
+        setSurveyInfo(dashboardFilterState?.data?.surveyInfoList);
+        setVerificationInfoList(dashboardFilterState?.data?.verificationInfoList);
+        setAadhaarEkycInfoList(dashboardFilterState?.data?.aadhaarEkycInfoList);
+        setEconomicCategoryInfoList(dashboardFilterState?.data?.economicCategoryInfoList);
+        setRetainInInfoList(dashboardFilterState?.data?.retainInInfoList);
         
 
         console.log("setVerificationInfoList", verificationInfoList);
@@ -285,7 +302,7 @@ const Dashboard = () => {
     <>
       <Filters onChange={handleFilterChange} />
       <main className="p-6 space-y-6">
-        {surveyInfo.length > 0 && (
+        {surveyInfo?.length > 0 && (
           <>
             <Box
               style={{ background: "#074465", color: "#FFF", borderRadius: 6 }}
@@ -314,7 +331,7 @@ const Dashboard = () => {
           </>
         )}
 
-        {verificationInfoList.length > 0 && (
+        {verificationInfoList?.length > 0 && (
           <>
             <Box
               style={{ background: "#074465", color: "#FFF", borderRadius: 6 }}
@@ -343,7 +360,7 @@ const Dashboard = () => {
           </>
         )}
 
-        {aadhaarEkycInfoList.length > 0 && (
+        {aadhaarEkycInfoList?.length > 0 && (
           <>
             <Box
               style={{ background: "#074465", color: "#FFF", borderRadius: 6 }}
@@ -374,7 +391,7 @@ const Dashboard = () => {
 
 
         
-      {economicCategoryInfoList.length > 0 && (
+      {economicCategoryInfoList?.length > 0 && (
           <>
             <Box
               style={{ background: "#074465", color: "#FFF", borderRadius: 6 }}
@@ -405,7 +422,7 @@ const Dashboard = () => {
 
           
         
-      {retainInInfoList.length > 0 && (
+      {retainInInfoList?.length > 0 && (
           <>
             <Box
               style={{ background: "#074465", color: "#FFF", borderRadius: 6 }}
