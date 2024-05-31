@@ -1,6 +1,7 @@
-import { Box, Divider, Paper, Typography } from "@mui/material";
+import { Box, Paper, Typography } from "@mui/material";
+import { Divider } from "antd";
 
-export default function MemberDetailsHeader() {
+export default function CorpDetailsHeader() {
   return (
     <>
       <Typography
@@ -11,11 +12,11 @@ export default function MemberDetailsHeader() {
         borderRadius={0.5}
         textAlign="left"
         paddingLeft={2}
+        fontStyle={"bold"}
       >
-        Land Records Details
+        Corp Details
       </Typography>
-      {/* Headings */}
-      <Divider />
+
       <Paper
         elevation={6}
         variant="elevation"
@@ -37,15 +38,13 @@ export default function MemberDetailsHeader() {
             <Typography variant="subtitle2">Name</Typography>
           </Box>
           <Box flexBasis="20%" style={{ textAlign: "center" }}>
-            <Typography variant="subtitle2">District</Typography>
+            <Typography variant="subtitle2">Season Name</Typography>
           </Box>
           <Box flexBasis="20%" style={{ textAlign: "center" }}>
-            <Typography variant="subtitle2">caste</Typography>
+            <Typography variant="subtitle2">Type Name</Typography>
           </Box>
           <Box flexBasis="20%" style={{ textAlign: "center" }}>
-            <Typography variant="subtitle2">
-            subCaste
-            </Typography>
+            <Typography variant="subtitle2">Crop Area</Typography>
           </Box>
           <Box flexBasis="20%"></Box>
         </Box>

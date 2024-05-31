@@ -5,6 +5,7 @@ import {
   FAMILIES_DETAIL_SUCCESS,
   FAMILIES_DETAIL_FALIURE,
 } from "../action_types";
+import { decryptData, encryptDataGet } from "../../utils/encryptDecrypt";
 // Action Creators
 export const fetchFamiliesDetSuccess = (data) => ({
   type: FAMILIES_DETAIL_SUCCESS,
@@ -17,16 +18,18 @@ export const fetchFamiliesDetFailure = (error) => ({
 });
 
 // Async Action to Fetch Data
-export const onFamiliesDetailApi = (parivarId, rationNo) => {
+export const onFamiliesDetailApi = (id) => {
   return async (dispatch) => {
     try {
       const response = await axios.get(
-        `/familyDetail?himParivarId=${parivarId}&rationCardNo=${rationNo}`,
+        `/farmer/detail?id=${encryptDataGet(JSON.stringify(id))}`,
         {}
       );
-      //console.log(response, "dashboard response")
-      dispatch(fetchFamiliesDetSuccess(response.data));
+      let responseData = decryptData(response?.data?.data)
+      // console.log(responseData, "dashboard response view", response?.data?.data) 
+      dispatch(fetchFamiliesDetSuccess(responseData));
     } catch (error) {
+      console.log("error",error)
       dispatch(fetchFamiliesDetFailure(error));
     }
   };

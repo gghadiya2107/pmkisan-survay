@@ -33,6 +33,21 @@ import ConfirmDialogEdit from "../ConfirmDialogEdit";
 export default function Members({ memberObject }) {
   //console.log("Edit Page Here I come", memberObject);
 
+  const memberObject1 = {
+    name : memberObject?.fullName,
+    caste : memberObject?.caste,
+    districtName : memberObject?.districtName,
+    villageName : memberObject?.villageName,
+    subCaste : memberObject?.subCaste,
+    jamabandiYear : memberObject?.jamabandiYear,
+    kangnoLand : memberObject?.kangnoLand,
+    kathauniLand : memberObject?.kathauniLand,
+    landPatwar : memberObject?.landPatwar,
+    mauza : memberObject?.mauza,
+    rakBa : memberObject?.rakBa,
+    tehsilName : memberObject?.tehsilName,
+  }
+
   const [expanded, setExpanded] = useState(false);
   const [isEditMode, setIsEditMode] = useState(false);
   const [editableMemberObject, setEditableMemberObject] = useState({
@@ -114,23 +129,25 @@ export default function Members({ memberObject }) {
                 >
                   <Box style={{ textAlign: "center" }}>
                     <Typography variant="subtitle1">
-                      {memberObject.memberName}
+                      {memberObject.fullName}
                     </Typography>
                   </Box>
                   <Box style={{ textAlign: "center" }}>
                     <Typography variant="subtitle1">
-                      {memberObject.dateOfBirth}
+                      {memberObject.districtName}
                     </Typography>
                   </Box>
                   <Box style={{ textAlign: "center" }}>
                     <Typography variant="subtitle1">
-                      {`XXXX-XXXX-${memberObject.aadhaarNumber
+                    {memberObject?.caste}
+                      {/* {`XXXX-XXXX-${memberObject.aadhaarNumber
                         .toString()
-                        .slice(-4)}`}
+                        .slice(-4)}`} */}
                     </Typography>
                   </Box>
                   <Box style={{ textAlign: "center" }}>
-                    {memberObject.isEkycVerified ? (
+                  {memberObject?.subCaste}
+                    {/* {memberObject.isEkycVerified ? (
                       <Chip
                         icon={<DoneAll fontSize="small" color="success" />}
                         label="Verified"
@@ -142,7 +159,7 @@ export default function Members({ memberObject }) {
                         label="Not Verified"
                         style={{ height: 20 }}
                       />
-                    )}
+                    )} */}
                   </Box>
                 </Box>
               </AccordionSummary>
@@ -210,7 +227,7 @@ export default function Members({ memberObject }) {
                 padding: "10px",
               }}
             >
-              {Object.entries(memberObject).map(([key, value]) => {
+              {Object.entries(memberObject1).map(([key, value]) => {
                 if (key === "himMemberId") return null; // Skip rendering for "himMemberId"
 
                 return (
@@ -267,9 +284,7 @@ export default function Members({ memberObject }) {
                             })
                           }
                         />
-                      ) : key === "aadhaarNumber" ? (
-                        `XXXX-XXXX-${value.toString().slice(-4)}`
-                      ) : typeof value === "boolean" ? (
+                      )  : typeof value === "boolean" ? (
                         value ? (
                           <Chip
                             icon={<DoneAll fontSize="small" color="success" />}

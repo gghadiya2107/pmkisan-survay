@@ -63,7 +63,7 @@ export default function ConfirmDialogEdit({
               style={{ fontSize: "1.2em", color: aadhaarNumberColor }}
             >
               XXXX-XXXX-
-              <strong>{memberObject.aadhaarNumber.toString().slice(-4)}</strong>
+              <strong>{memberObject?.aadhaarNumber?.toString()?.slice(-4)}</strong>
             </Typography>
           </DialogContentText>
         </DialogContent>

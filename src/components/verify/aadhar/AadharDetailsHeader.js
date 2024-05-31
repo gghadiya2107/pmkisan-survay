@@ -1,6 +1,7 @@
-import { Box, Divider, Paper, Typography } from "@mui/material";
+import { Box, Paper, Typography } from "@mui/material";
+import { Divider } from "antd";
 
-export default function MemberDetailsHeader() {
+export default function AadharDetailsHeader() {
   return (
     <>
       <Typography
@@ -11,11 +12,11 @@ export default function MemberDetailsHeader() {
         borderRadius={0.5}
         textAlign="left"
         paddingLeft={2}
+        fontStyle={"bold"}
       >
-        Land Records Details
+        Aadhar Details
       </Typography>
-      {/* Headings */}
-      <Divider />
+
       <Paper
         elevation={6}
         variant="elevation"
@@ -37,15 +38,13 @@ export default function MemberDetailsHeader() {
             <Typography variant="subtitle2">Name</Typography>
           </Box>
           <Box flexBasis="20%" style={{ textAlign: "center" }}>
-            <Typography variant="subtitle2">District</Typography>
+            <Typography variant="subtitle2">Birth Date</Typography>
           </Box>
           <Box flexBasis="20%" style={{ textAlign: "center" }}>
-            <Typography variant="subtitle2">caste</Typography>
+            <Typography variant="subtitle2">Aadhaar Number</Typography>
           </Box>
           <Box flexBasis="20%" style={{ textAlign: "center" }}>
-            <Typography variant="subtitle2">
-            subCaste
-            </Typography>
+            <Typography variant="subtitle2">State</Typography>
           </Box>
           <Box flexBasis="20%"></Box>
         </Box>

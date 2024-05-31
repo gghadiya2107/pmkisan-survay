@@ -36,6 +36,8 @@ import {
 } from "../../utils/cookie";
 import { Verified } from "@mui/icons-material";
 import { set } from "lodash";
+import { fetchFamiliesDetSuccess } from "../../network/actions/familyDetailApi";
+import { useDispatch } from "react-redux";
 
 const drawerWidth = 260;
 
@@ -56,6 +58,7 @@ const FireNav = styled(List)({
 function Layout(props) {
   const { window } = props;
   const { children } = props;
+  const dispatch = useDispatch()
 
   const router = useRouter();
 
@@ -107,6 +110,7 @@ function Layout(props) {
   const handleLogout = () => {
     setAnchorEl(null);
     removeToken();
+    dispatch(fetchFamiliesDetSuccess({}))
     setTimeout(function () {
       router.push("/login");
     }, 1000);
@@ -188,14 +192,14 @@ function Layout(props) {
       case "Surveyor":
         return [
           { text: "Dashboard", route: "dashboard" },
-          { text: "Survey Summary", route: "survey_summary" },
+          // { text: "Survey Summary", route: "survey_summary" },
           { text: "View Data", route: "view_edit_data" }
          
         ];
       case "SuperAdmin":
         return [
           { text: "Dashboard", route: "dashboard" },
-          { text: "Survey Summary", route: "survey_summary" },
+          // { text: "Survey Summary", route: "survey_summary" },
           { text: "View Data", route: "view_edit_data" }
          
         ];

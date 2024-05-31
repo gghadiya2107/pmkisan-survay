@@ -14,7 +14,7 @@ export default function FamilyDetailsHeader() {
         paddingLeft={2}
         fontStyle={"bold"}
       >
-        Family Details
+        Farmer Details
       </Typography>
 
       <Paper
@@ -35,16 +35,16 @@ export default function FamilyDetailsHeader() {
           mb={1}
         >
           <Box flexBasis="20%" style={{ textAlign: "center" }}>
-            <Typography variant="subtitle2">Head of Family Name</Typography>
+            <Typography variant="subtitle2">Name</Typography>
           </Box>
           <Box flexBasis="20%" style={{ textAlign: "center" }}>
-            <Typography variant="subtitle2">Ration Card Number</Typography>
+            <Typography variant="subtitle2">District Name</Typography>
           </Box>
           <Box flexBasis="20%" style={{ textAlign: "center" }}>
-            <Typography variant="subtitle2">Economic Status</Typography>
+            <Typography variant="subtitle2">Birth Date</Typography>
           </Box>
           <Box flexBasis="20%" style={{ textAlign: "center" }}>
-            <Typography variant="subtitle2">Social Category</Typography>
+            <Typography variant="subtitle2">Email</Typography>
           </Box>
           <Box flexBasis="20%"></Box>
         </Box>
