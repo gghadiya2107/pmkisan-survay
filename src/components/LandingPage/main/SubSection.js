@@ -8,6 +8,16 @@ import TimelineContent from '@mui/lab/TimelineContent';
 import TimelineDot from '@mui/lab/TimelineDot';
 import { getImagePath } from '../../../utils/CustomImagePath';
 
+const timeline = {
+    backgroundColor: "#75A47F",
+    color: "white",
+    fontSize: "40px",
+    height: "100px",
+    width: "100px",
+    display: "grid",
+    placeItems: "center",
+}
+
 const theme = createTheme({
     components: {
       MuiTimelineConnector: {
@@ -57,7 +67,7 @@ const SubSection = () => {
     >
       <TimelineItem>
         <TimelineSeparator>
-          <TimelineDot className='timeLine'>01</TimelineDot>   
+          <TimelineDot style={timeline}>01</TimelineDot>   
           <TimelineConnector style={{backgroundColor: "#75A47F"}}/>
         </TimelineSeparator>
         <TimelineContent>
@@ -103,7 +113,7 @@ const SubSection = () => {
       </TimelineItem>
       <TimelineItem>
         <TimelineSeparator>
-        <TimelineDot  className='timeLine'>02</TimelineDot>   
+        <TimelineDot  style={timeline}>02</TimelineDot>   
         <TimelineConnector style={{backgroundColor: "#75A47F"}}/>
         </TimelineSeparator>
         <TimelineContent>  <Grid container spacing={5} style={{
@@ -147,7 +157,7 @@ The survey application offers multiple convenient options for conducting data co
       </TimelineItem>
       <TimelineItem>
         <TimelineSeparator>
-        <TimelineDot  className='timeLine'>03</TimelineDot>  
+        <TimelineDot  style={timeline}>03</TimelineDot>  
         {/* <TimelineConnector />  */}
         </TimelineSeparator>
         <TimelineContent>  <Grid container spacing={5} style={{

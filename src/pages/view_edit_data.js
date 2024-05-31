@@ -554,7 +554,7 @@ const ViewData = () => {
                     </Grid>
                     {selectedFamily?.cropDetails &&
                       selectedFamily?.cropDetails.map((cropDetail, index) => (
-                        <Paper elevation={3} variant="elevation">
+                        <Paper elevation={3} variant="elevation" key={index}>
                       <Corp selectedFamily={cropDetail} />
                     </Paper>
                       ))}
