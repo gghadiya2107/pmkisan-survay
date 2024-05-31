@@ -1,7 +1,7 @@
 // utils/encryption.js
 import CryptoJS from 'crypto-js';
 
-const secretKey = process.env.NEXT_PUBLIC_SECRET_KEY_ENCRYPT_DECRYPT;
+const secretKey = "a1b2c3d4e5f67890a1b2c3d4e5f67890";
 
 // Encryption function
 // export function encryptData(data) {
