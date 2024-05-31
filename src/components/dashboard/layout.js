@@ -17,7 +17,6 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Logo from "../../assets/BackgroundLogin";
-import AppLogo from "../../assets/svg/himachal_logoo.svg";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { usePathname } from "next/navigation";
@@ -38,6 +37,7 @@ import { Verified } from "@mui/icons-material";
 import { set } from "lodash";
 import { fetchFamiliesDetSuccess } from "../../network/actions/familyDetailApi";
 import { useDispatch } from "react-redux";
+import { getImagePath } from "../../utils/CustomImagePath";
 
 const drawerWidth = 260;
 
@@ -119,7 +119,7 @@ function Layout(props) {
   const drawer = (
     <div style={{}}>
       <Toolbar>
-        <Image src={AppLogo} width={65} height={50} alt="Logo" />
+        <Image src={getImagePath('/himachal_logoo.svg')} width={65} height={45} alt="Logo" />
         <Typography variant="h6" noWrap component="div" marginLeft={2}>
         Field Survey
                   {/* <br /> (Urban) */}

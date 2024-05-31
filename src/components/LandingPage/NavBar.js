@@ -12,7 +12,7 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 
-import AppLogo from '../../assets/svg/himachal_logoo.svg'
+// import AppLogo from '../../assets/svg/himachal_logoo.svg'
 import Image from 'next/image';
 import { useRouter } from 'next/router'
 
@@ -20,6 +20,7 @@ import useScrollTrigger from '@mui/material/useScrollTrigger';
 
 import Drawer from '@mui/material/Drawer';
 import { CssBaseline, Divider, List, ListItem, ListItemButton, ListItemText } from '@mui/material';
+import { getImagePath } from '../../utils/CustomImagePath';
 
 
 
@@ -92,7 +93,7 @@ const ResponsiveAppBar = (props) => {
                             sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }}
                         >
                             < Image
-                                src={AppLogo}
+                                src={getImagePath('/himachal_logoo.svg')}
                                 width={45}
                                 height={30}
                                 alt="Logo"

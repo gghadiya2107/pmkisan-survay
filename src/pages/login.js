@@ -13,7 +13,7 @@ import Image from "next/image";
 
 import Paper from "@mui/material/Paper";
 
-import AppLogo from "../assets/svg/himachal_logoo.svg";
+// import AppLogo from "../assets/svg/himachal_logoo.svg";
 
 import { useRouter } from "next/router";
 import Snackbar from "@mui/material/Snackbar";
@@ -29,6 +29,7 @@ import { saveToken, getUserName, getUlb } from "../utils/cookie";
 import withAuth from "../utils/withAuth";
 import Script from "next/script";
 import Captcha from "../utils/Captcha";
+import { getImagePath } from "../utils/CustomImagePath";
 
 const img = require("../../public/himachal_bg.jpeg");
 const styling = {
@@ -241,7 +242,7 @@ function SignIn(props) {
               }}
             >
               {/* < Logo /> */}
-              <Image src={AppLogo} width={80} height={50} alt="Logo" />
+              <Image src={getImagePath('/himachal_logoo.svg')} width={80} height={50} alt="Logo" />
 
               <Typography
                 align="center"

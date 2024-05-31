@@ -6,6 +6,7 @@ import TimelineSeparator from '@mui/lab/TimelineSeparator';
 import TimelineConnector from '@mui/lab/TimelineConnector';
 import TimelineContent from '@mui/lab/TimelineContent';
 import TimelineDot from '@mui/lab/TimelineDot';
+import { getImagePath } from '../../../utils/CustomImagePath';
 
 const theme = createTheme({
     components: {
@@ -90,7 +91,7 @@ const SubSection = () => {
                     <Grid item xs={12} md={6} container justifyContent="center" style={{
 
                     }}>
-                        <img src={'/urban/images/steps/step1.jpg'} alt="My Team" style={{
+                        <img src={getImagePath('/images/steps/step1.jpg')} alt="My Team" style={{
                             height: 350,
                             marginBottom : 50
                         }} />
@@ -134,7 +135,7 @@ The survey application offers multiple convenient options for conducting data co
                     <Grid item xs={12} md={6} container justifyContent="center" style={{
 
                     }}>
-                        <img src={'/urban/images/steps/step1.jpg'} alt="My Team" style={{
+                        <img src={getImagePath('/images/steps/step1.jpg')} alt="My Team" style={{
                             height: 350,
                             marginBottom : 50
 
@@ -178,7 +179,7 @@ During the survey, it is essential to capture a range of key data elements to en
                     <Grid item xs={12} md={6} container justifyContent="center" style={{
 
                     }}>
-                        <img src={'/urban/images/steps/step1.jpg'} alt="My Team" style={{
+                        <img src={getImagePath('/images/steps/step1.jpg')} alt="My Team" style={{
                             height: 350,
                             marginBottom : 50
 

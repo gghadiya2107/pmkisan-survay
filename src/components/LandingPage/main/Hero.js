@@ -3,6 +3,7 @@ import { Grid, Typography, Button, Box } from "@mui/material";
 // import myteam from '../images/myteam.jpg';
 import Link from "next/link";
 import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
+import { getImagePath } from "../../../utils/CustomImagePath";
 
 const Hero = () => {
   return (
@@ -69,7 +70,7 @@ const Hero = () => {
         <Grid item xs={12} md={1}></Grid>
         <Grid  xs={12} md={5} pt={0}>
           <img
-            src={"/urban/images/banner3.png"}
+            src={getImagePath('/images/banner3.png')}
             alt="My Team"
             style={{
               width: "100%",
