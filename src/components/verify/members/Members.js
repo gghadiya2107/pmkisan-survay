@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import AttachFileIcon from '@mui/icons-material/AttachFile';
 
 import {
   Accordion,
@@ -46,6 +47,9 @@ export default function Members({ memberObject }) {
     mauza : memberObject?.mauza,
     rakBa : memberObject?.rakBa,
     tehsilName : memberObject?.tehsilName,
+    attachment1 : memberObject?.pdfDownload,
+    attachment2 : memberObject?.pdf2,
+
   }
 
   const [expanded, setExpanded] = useState(false);
@@ -298,6 +302,10 @@ export default function Members({ memberObject }) {
                             style={{ height: 20 }}
                           />
                         )
+                      ) : key == "attachment1" ? (
+                        <p style={{cursor : "pointer", color : "blue", display: "flex", alignItems : "center"}} onClick={() => window.open(memberObject?.pdfDownload)}><AttachFileIcon />View File</p>
+                      ) : key == "attachment2" ? (
+                        <p style={{cursor : "pointer", color : "blue", display: "flex", alignItems : "center"}} onClick={() => window.open(memberObject?.pdf2)}><AttachFileIcon />View File</p>
                       ) : (
                         value?.toString()
                       )}

@@ -44,10 +44,7 @@ const Hero = () => {
               opacity: 0.6,
             }}
           >
-            Efficiently collect and manage urban household data to maintain an
-            updated Parivar Register, ensuring accurate and essential
-            demographic information for government and civic planning in your
-            city.
+            Efficiently collect and manage farmer data to maintain an updated Farmer Database, ensuring accurate and essential agricultural information for government and agricultural planning in your region.
           </Typography>
           <Link href="/apk/Survey1.12.apk" download>
             <Button

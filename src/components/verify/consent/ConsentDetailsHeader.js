@@ -35,7 +35,7 @@ export default function ConsentDetailsHeader() {
         >
           <Box flexBasis="80%" style={{ textAlign: "center" }}>
             <Typography variant="subtitle2">
-              Consent Details (Declaration Signed by the Family Member)
+              Consent Details (Declaration Signed by the Farmer)
             </Typography>
           </Box>
 

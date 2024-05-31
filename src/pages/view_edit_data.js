@@ -48,19 +48,21 @@ import CorpDetailsHeader from "../components/verify/corp/CorpDetailsHeader";
 import Corp from "../components/verify/corp/Corp";
 import AadharDetailsHeader from "../components/verify/aadhar/AadharDetailsHeader";
 import Aadhar from "../components/verify/aadhar/Aadhar";
+import ConsentDetailsHeader from "../components/verify/consent/ConsentDetailsHeader";
+import ConsentHeader from "../components/verify/consent/ConsentHeader";
 
 const columns = [
   {
     id: "name",
-    label: "Head of Family",
+    label: "Farmer Name",
     minWidth: 170,
     align: "center",
     fontWeight: "bold",
   },
-  { id: "kisanId", label: "Kisan Id.", minWidth: 100, align: "center" },
+  { id: "kisanId", label: "PM Kisan Id.", minWidth: 100, align: "center" },
   {
     id: "totalFamilyMembers",
-    label: "Total Members",
+    label: "Family Members",
     align: "center",
     // format: (value) => value.toLocaleString("en-US"),
   },
@@ -76,7 +78,9 @@ const columns = [
     label: "Aadhar Number",
     minWidth: 170,
     align: "center",
-    // format: (value) => value.toFixed(2),
+    format: (value) => `XXXX-XXXX-${value
+      .toString()
+      .slice(-4)}`,
   },
   {
     id: "contactNumber",
@@ -123,9 +127,7 @@ const ViewData = () => {
 
   const [selectedItems, setSelectedItems] = useState([]);
   const [familyList, setfamilyList] = useState([]);
-  console.log('familyList', familyList)
   const [selectedFamily, setselectedFamily] = useState({});
-  console.log('selectedFamily state ', selectedFamily )
   const [detailCalled, setdetailCalled] = useState(false);
   const [isCardClicked, setCardClicked] = useState(false);
   const [showModal, setShowModal] = useState(false);
@@ -145,10 +147,8 @@ const ViewData = () => {
 
   const dispatch = useDispatch();
   const familiesList = useSelector((state) => state.familiesList);
-  console.log('familiesList', familiesList)
 
   const familiesDetailApi = useSelector((state) => state.familiesDetailApi);
-  console.log("familiesDetailApi new",familiesDetailApi)
 
 
   const [isAdmin, setIsAdmin] = useState(false);
@@ -158,7 +158,6 @@ const ViewData = () => {
 
   useEffect(() => {
     const roles = JSON.parse(getRoles());
-    console.log('roles', roles)
     // const { roles } = globalUser || {};
     // setIsAdmin(roles && roles.length > 0 && roles[0] === "Admin");
     setIsAdmin(
@@ -169,7 +168,6 @@ const ViewData = () => {
   }, []);
 
   const handleFilterChange = ({ district, municipal, ward, village }) => {
-    console.log("selectedDistrict value", district);
     setSelectedDistrict(district);
     setSelectedMunicipality(municipal);
     setSelectedWard(ward);
@@ -183,7 +181,6 @@ const ViewData = () => {
       village?.value,
       1
     );
-    console.log("params", queryParams);
     dispatch(onFamiliesList(queryParams));
   };
 
@@ -193,12 +190,8 @@ const ViewData = () => {
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
-    console.log("selectedDistrict", selectedDistrict);
-    console.log("selectedMunicipality", selectedMunicipality);
-    console.log("selectedMunicipality", selectedWard);
 
     if (selectedDistrict || selectedMunicipality || selectedWard) {
-      console.log("Inside x", selectedDistrict);
       const queryParams = createQueryParamsDefault(
         newPage - 1,
         100,
@@ -207,7 +200,6 @@ const ViewData = () => {
         selectedWard?.id,
         1
       );
-      console.log("queryParams", queryParams);
       dispatch(onFamiliesList(queryParams));
     } else {
       const globalUser = JSON.parse(getToken());
@@ -221,7 +213,6 @@ const ViewData = () => {
         ulb?.id,
         1
       );
-      console.log("queryParams", queryParams);
       dispatch(onFamiliesList(queryParams));
     }
   };
@@ -232,7 +223,6 @@ const ViewData = () => {
   };
 
   useEffect(() => {
-    console.log("familiesDetailApi",familiesDetailApi)
     if (familiesDetailApi?.data?.firstName) {
       // const { data, status, message, rationCardAlreadyExists } =
       //   familiesList.data || {};
@@ -243,7 +233,6 @@ const ViewData = () => {
       setdetailCalled(false);
     }
   }, [familiesDetailApi]);
-
   useEffect(() => {
     // setShowModal(false);
     if (familiesList?.error) {
@@ -291,7 +280,6 @@ const ViewData = () => {
     // if (verificationStatusId)
     //   queryParams.verificationStatusId = verificationStatusId;
 
-    console.log(queryParams);
 
     return queryParams;
   };
@@ -315,7 +303,6 @@ const ViewData = () => {
 
   //Testing Working Code
   const handleSendtoedit = (himParivarId, RationCard) => {
-    console.log("HimParivar ID", himParivarId, "Ration Card", RationCard);
 
     // Construct the URL with query parameters
     const queryParam = new URLSearchParams({
@@ -406,10 +393,7 @@ const ViewData = () => {
                                                     <RemoveRedEyeIcon />
                                                   }
                                                   onClick={(handleEvent) => {
-                                                    console.log(
-                                                      row,
-                                                      "Row Data"
-                                                    );
+                                                   
                                                     setSelectedItems(row);
                                                     setdetailCalled(true);
                                                     dispatch(
@@ -444,10 +428,7 @@ const ViewData = () => {
                                                     <RemoveRedEyeIcon />
                                                   }
                                                   onClick={(handleEvent) => {
-                                                    console.log(
-                                                      row,
-                                                      "Row Data"
-                                                    );
+                                                    
                                                     setSelectedItems(row);
                                                     setdetailCalled(true);
                                                     // setShowModal(true);
@@ -545,7 +526,7 @@ const ViewData = () => {
                       <Families selectedFamily={selectedFamily} />
                     </Paper>
                     <Divider>&nbsp; &nbsp;</Divider>
-                    <Grid container>
+                   {selectedFamily?.cropDetails && <><Grid container>
                       <Grid item={true} xs={12}>
                         <CorpDetailsHeader />
                       </Grid>
@@ -558,9 +539,10 @@ const ViewData = () => {
                       <Corp selectedFamily={cropDetail} />
                     </Paper>
                       ))}
+                      </>}
                     
                     <Divider>&nbsp; &nbsp;</Divider>
-                    <Grid container>
+                    {selectedFamily?.landRecords &&<><Grid container>
                       <Grid item={true} xs={12}>
                         <MemberDetailsHeader />
                       </Grid>
@@ -575,11 +557,11 @@ const ViewData = () => {
                         >
                           <Members memberObject={landRecord} />
                         </Paper>
-                      ))}
+                      ))}</>}
                   </div>
 
 
-                  <Grid container>
+                  {selectedFamily?.farmerAadhaarDetails &&<><Grid container>
                       <Grid item={true} xs={12}>
                         <AadharDetailsHeader />
                       </Grid>
@@ -587,8 +569,21 @@ const ViewData = () => {
 
                     <Paper elevation={3} variant="elevation">
                       <Aadhar selectedFamily={selectedFamily?.farmerAadhaarDetails} />
-                    </Paper>
+                    </Paper></>}
                     <Divider>&nbsp; &nbsp;</Divider>
+
+                    <Grid container>
+                      <Grid item={true} xs={12}>
+                        <ConsentDetailsHeader />
+                      </Grid>
+
+                     
+                    </Grid>
+                    <Paper elevation={3} variant="elevation">
+                    {selectedFamily && (
+                      <ConsentHeader selectedFamily={selectedFamily} />
+                    )}
+                  </Paper>
                 </Box>
               </Modal>
             </div>

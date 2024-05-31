@@ -101,9 +101,14 @@ const SubSection = () => {
                     <Grid item xs={12} md={6} container justifyContent="center" style={{
 
                     }}>
-                        <img src={getImagePath('/images/steps/step1.jpg')} alt="My Team" style={{
+                        <img src={getImagePath('/images/login1.png')} alt="My Team" style={{
                             height: 350,
                             marginBottom : 50
+                        }} />
+                        <img src={getImagePath('/images/login2.jpg')} alt="My Team" style={{
+                            height: 350,
+                            marginBottom : 50,
+                            marginLeft : 20
                         }} />
                     </Grid>
 
@@ -138,14 +143,14 @@ Conducting Survey
                                 lineHeight: 1.8,
                                 paddingBottom: '30px',
                             }}>
-The survey application offers multiple convenient options for conducting data collection. The surveyor can choose to proceed via Ration Card Number, streamlining the process if the citizen has one, or opt for a hassle-free survey without it. Additionally,the applciation allows you to easily add new members to the existing families/family, ensuring that the household data is always up-to-date and accurate. With these flexible survey options, the application aims to provide a seamless and efficient experience while ensuring that the information contributes to the maintenance of essential records.                        </Typography>
+The farmer database, utilizing data from the PM Kisan Database shared by the NIC Department, offers multiple convenient options for data collection. Surveyors can choose to proceed via the PM Kisan Database, streamlining the process if the farmer is registered in the database, or opt for a hassle-free survey without it. Additionally, the application allows you to easily add new farmers to the existing database, ensuring that the agricultural data is always up-to-date and accurate. With these flexible survey options, the application aims to provide a seamless and efficient experience while ensuring that the information contributes to the maintenance of essential agricultural records.   </Typography>
 
                     </Grid>
 
                     <Grid item xs={12} md={6} container justifyContent="center" style={{
 
                     }}>
-                        <img src={getImagePath('/images/steps/step1.jpg')} alt="My Team" style={{
+                        <img src={getImagePath('/images/step2.jpg')} alt="My Team" style={{
                             height: 350,
                             marginBottom : 50
 
@@ -182,14 +187,14 @@ Data to be Captured
                                 lineHeight: 1.8,
                                 paddingBottom: '30px',
                             }}>
-During the survey, it is essential to capture a range of key data elements to ensure comprehensive and accurate information. These include gathering family details, gender, date of birth, and entering family relations to establish connections within households. Additionally, educational qualifications and occupation data are collected to understand the demographic and socioeconomic landscape. Verification of Aadhaar, property details, mobile numbers, and email addresses adds an extra layer of precision to the data. Lastly, capturing consent is an integral part of the survey process to ensure compliance and transparency. These mandatory parameters collectively contribute to a thorough and reliable survey outcome.                        </Typography>
+Within the Farmer Database survey, it's imperative to capture a spectrum of key data elements ensuring comprehensive and accurate information. This encompasses gathering Aadhaar authentication, farmer details, land particulars, crop information, and capturing consent. The Aadhaar authentication provides a robust verification layer, while farmer details include essential demographics. Land details offer insights into agricultural holdings, while crop specifics shed light on farming activities. Consent collection ensures compliance and transparency throughout the process. Additionally, incorporating farmer photos adds a visual identification element, enhancing database integrity. These modules collectively contribute to a thorough and reliable farmer database, facilitating informed decision-making in agricultural management.                </Typography>
 
                     </Grid>
 
                     <Grid item xs={12} md={6} container justifyContent="center" style={{
 
                     }}>
-                        <img src={getImagePath('/images/steps/step1.jpg')} alt="My Team" style={{
+                        <img src={getImagePath('/images/step3.jpg')} alt="My Team" style={{
                             height: 350,
                             marginBottom : 50
 

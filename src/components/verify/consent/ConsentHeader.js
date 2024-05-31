@@ -30,13 +30,14 @@ import {
 } from "@mui/icons-material";
 import ConfirmDialogEdit from "../ConfirmDialogEdit";
 import { Avatar } from "antd";
+import Image from "next/image";
 
 export default function ConsentHeader({ selectedFamily }) {
   //console.log("Edit Page Here I come ConsentHeader", selectedFamily);
 
   const extractedConsent = {
-    fileData: selectedFamily?.fileData,
-    consentDocName: selectedFamily?.consentDocName,
+    fileData: selectedFamily?.farmerConsentUrl,
+    consentDocName: selectedFamily?.farmerConsentUrl?.split("consent/")?.[1],
   };
 
   const [expanded, setExpanded] = useState(false);
@@ -88,7 +89,7 @@ export default function ConsentHeader({ selectedFamily }) {
                 >
                   <Box style={{ textAlign: "center" }}>
                     <Typography variant="subtitle1">
-                      Consent Details (Declaration Signed by the Family Member)
+                      Consent Details (Declaration Signed by the Farmer)
                     </Typography>
                   </Box>
                 </Box>
@@ -148,7 +149,15 @@ export default function ConsentHeader({ selectedFamily }) {
                 {extractedConsent.fileData && (
                   <Box>
                     <Typography variant="h6">File Uploaded:</Typography>
-                    <img
+                    <Image src={extractedConsent.fileData} height={200} width={150}
+                    style={{
+                      width: "80%", // Takes full width of the parent container
+                      height: "80%",
+                      border: "2px solid #000",
+                    }}
+
+                    />
+                    {/* <img
                       src={getImageSrc()}
                       alt="Consent Document"
                       sx={{
@@ -156,7 +165,7 @@ export default function ConsentHeader({ selectedFamily }) {
                         height: "80%",
                         border: "2px solid #000",
                       }}
-                    />
+                    /> */}
                   </Box>
                 )}
               </Box>

@@ -53,7 +53,6 @@ export default function Families({ selectedFamily }) {
   // Inside your handleToggleEnlarged1 function
 const handleToggleEnlarged1 = (value) => {
 window.scrollTo(0, 0);
-console.log('value', value);
 setEnlarged(!enlarged);
 setCurrentValue(value);
 const modalContent = document.querySelector(".modalMain");
@@ -63,7 +62,6 @@ if (modalContent) {
 }
 };
 
-  console.log('currentValue', currentValue)
 
 
   const [expanded, setExpanded] = useState(false);
@@ -285,7 +283,7 @@ if (modalContent) {
                       padding: "5px",
                     }}
                   > 
-                   <Box  style={{
+                 {selectedFamily?.bplCertUrl &&  <><Box  style={{
                         flex: 1,
                         textAlign: "right",
                         paddingRight: "5px",
@@ -304,8 +302,58 @@ if (modalContent) {
                       onClick={() => handleToggleEnlarged1(selectedFamily?.bplCertUrl)} 
                     ><Image src={selectedFamily?.bplCertUrl} height={200} width={150}  />
                     
-                    </Box>
-                  
+                    </Box></>}
+                    {enlarged && currentValue && (
+  <div
+    className="modal"
+    onClick={handleToggleEnlarged}
+    style={{
+      position: "fixed",
+      top: 0,
+      left: 0,
+      width: "100%",
+      height: "100%",
+      backgroundColor: "rgba(0, 0, 0, 0.7)", // Semi-transparent black background
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      zIndex: 999, // Set the z-index value to control the stacking order
+    }}
+  >
+    <div
+      className="modal-content"
+      style={{
+        position: "relative",
+        overflowY: "auto", // Ensure modal content is scrollable
+        maxHeight: "80vh", // Adjust max height as needed
+      }}
+    >
+      <span
+        className="close"
+        style={{
+          position: "absolute",
+          top: "0px",
+          right: "10px",
+          color: "red",
+          fontSize: "24px",
+          cursor: "pointer",
+        }}
+        onClick={handleToggleEnlarged}
+      >
+        &times;
+      </span>
+      <img
+        src={currentValue}
+        alt="Aadhaar Document"
+        style={{
+          maxWidth: "430px",
+          maxHeight: "430px",
+          objectFit : "cover"
+        }}
+      />
+    </div>
+  </div>
+)}
                     </Box>
              <Box
                     gridColumn="span 1"
@@ -318,7 +366,7 @@ if (modalContent) {
                       padding: "5px",
                     }}
                   > 
-                   <Box  style={{
+                 {selectedFamily?.farmerPhotoUrl && <> <Box  style={{
                         flex: 1,
                         textAlign: "right",
                         paddingRight: "5px",
@@ -336,10 +384,10 @@ if (modalContent) {
                     ><Image src={selectedFamily?.farmerPhotoUrl} height={200} width={150}
                     onClick={() => handleToggleEnlarged1(selectedFamily?.farmerPhotoUrl)} 
                     
-                    /></Box>
+                    /></Box></>}
                 
                     </Box>
-             <Box
+             {/* <Box
                     gridColumn="span 1"
                     style={{
                       display: "flex",
@@ -417,7 +465,7 @@ if (modalContent) {
                     </div>
                   </div>
                 )}
-                    </Box>
+                    </Box> */}
 
             </Box>
           </AccordionDetails>

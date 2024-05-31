@@ -58,7 +58,6 @@ import Image from "next/image";
     // Inside your handleToggleEnlarged1 function
 const handleToggleEnlarged1 = (value) => {
   window.scrollTo(0, 0);
-  console.log('value', value);
   setEnlarged(!enlarged);
   setCurrentValue(value);
   const modalContent = document.querySelector(".modalMain");
@@ -69,7 +68,6 @@ const handleToggleEnlarged1 = (value) => {
 };
 
 
-    console.log('enlarged', enlarged,currentValue)
   
     const handleViewOrCloseClick = () => {
       setExpanded(!expanded);
@@ -259,7 +257,7 @@ const handleToggleEnlarged1 = (value) => {
                       padding: "5px",
                     }}
                   > 
-                   <Box  style={{
+                  {selectedFamily?.aadhaarPhotoUrl &&  <><Box  style={{
                         flex: 1,
                         textAlign: "right",
                         paddingRight: "5px",
@@ -277,7 +275,7 @@ const handleToggleEnlarged1 = (value) => {
                     ><Image src={selectedFamily?.aadhaarPhotoUrl} height={200} width={150}
                     onClick={() => handleToggleEnlarged1(selectedFamily?.aadhaarPhotoUrl)} 
                     
-                    /></Box>
+                    /></Box></>}
                     
                     </Box>
              <Box
@@ -291,7 +289,7 @@ const handleToggleEnlarged1 = (value) => {
                       padding: "5px",
                     }}
                   > 
-                   <Box  style={{
+                 {selectedFamily?.aadhaarDocUrl &&  <><Box  style={{
                         flex: 1,
                         textAlign: "right",
                         paddingRight: "5px",
@@ -309,7 +307,7 @@ const handleToggleEnlarged1 = (value) => {
                     ><Image src={selectedFamily?.aadhaarDocUrl} height={200} width={150}
                     onClick={() => handleToggleEnlarged1(selectedFamily?.aadhaarDocUrl)} 
 
-                    /></Box>
+                    /></Box></>}
                     
                     </Box>
                     {enlarged && currentValue && (
@@ -355,8 +353,9 @@ const handleToggleEnlarged1 = (value) => {
         src={currentValue}
         alt="Aadhaar Document"
         style={{
-          maxWidth: "100%",
-          maxHeight: "100%",
+          maxWidth: "430px",
+          maxHeight: "430px",
+          objectFit : "cover"
         }}
       />
     </div>
