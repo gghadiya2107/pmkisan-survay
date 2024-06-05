@@ -58,6 +58,7 @@ export default function ConsentHeader({ selectedFamily }) {
     setExpanded(false); // Optionally, collapse the accordion here
   };
 
+  console.log('extractedConsent', extractedConsent)
   const getImageSrc = () => {
     if (!extractedConsent.fileData) {
       return "";
@@ -149,7 +150,7 @@ export default function ConsentHeader({ selectedFamily }) {
                 {extractedConsent.fileData && (
                   <Box>
                     <Typography variant="h6">File Uploaded:</Typography>
-                    <Image src={extractedConsent.fileData} height={200} width={150}
+                    <img src={extractedConsent.fileData} height={200} width={150}
                     style={{
                       width: "80%", // Takes full width of the parent container
                       height: "80%",

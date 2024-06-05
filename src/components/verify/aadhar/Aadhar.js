@@ -272,7 +272,7 @@ const handleToggleEnlarged1 = (value) => {
                         paddingLeft: "5px",
                         color: "#555",
                       }}
-                    ><Image src={selectedFamily?.aadhaarPhotoUrl} height={200} width={150}
+                    ><img src={selectedFamily?.aadhaarPhotoUrl} height={200} width={150}
                     onClick={() => handleToggleEnlarged1(selectedFamily?.aadhaarPhotoUrl)} 
                     
                     /></Box></>}
@@ -304,7 +304,7 @@ const handleToggleEnlarged1 = (value) => {
                         paddingLeft: "5px",
                         color: "#555",
                       }}
-                    ><Image src={selectedFamily?.aadhaarDocUrl} height={200} width={150}
+                    ><img src={selectedFamily?.aadhaarDocUrl} height={200} width={150}
                     onClick={() => handleToggleEnlarged1(selectedFamily?.aadhaarDocUrl)} 
 
                     /></Box></>}

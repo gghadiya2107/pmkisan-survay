@@ -561,7 +561,7 @@ const ViewData = () => {
                   </div>
 
 
-                  {selectedFamily?.farmerAadhaarDetails &&<><Grid container>
+                  {selectedFamily?.farmerAadhaarDetails && <><Grid container>
                       <Grid item={true} xs={12}>
                         <AadharDetailsHeader />
                       </Grid>
@@ -572,7 +572,7 @@ const ViewData = () => {
                     </Paper></>}
                     <Divider>&nbsp; &nbsp;</Divider>
 
-                    <Grid container>
+                  { selectedFamily?.farmerConsentUrl &&<> <Grid container>
                       <Grid item={true} xs={12}>
                         <ConsentDetailsHeader />
                       </Grid>
@@ -583,7 +583,7 @@ const ViewData = () => {
                     {selectedFamily && (
                       <ConsentHeader selectedFamily={selectedFamily} />
                     )}
-                  </Paper>
+                  </Paper> </>}
                 </Box>
               </Modal>
             </div>

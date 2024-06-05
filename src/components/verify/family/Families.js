@@ -300,7 +300,7 @@ if (modalContent) {
                         
                       }}
                       onClick={() => handleToggleEnlarged1(selectedFamily?.bplCertUrl)} 
-                    ><Image src={selectedFamily?.bplCertUrl} height={200} width={150}  />
+                    ><img src={selectedFamily?.bplCertUrl} height={200} width={150}  />
                     
                     </Box></>}
                     {enlarged && currentValue && (
@@ -381,7 +381,7 @@ if (modalContent) {
                         paddingLeft: "5px",
                         color: "#555",
                       }}
-                    ><Image src={selectedFamily?.farmerPhotoUrl} height={200} width={150}
+                    ><img src={selectedFamily?.farmerPhotoUrl} height={200} width={150}
                     onClick={() => handleToggleEnlarged1(selectedFamily?.farmerPhotoUrl)} 
                     
                     /></Box></>}
