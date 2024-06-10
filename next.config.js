@@ -2,8 +2,8 @@
 const webpack = require("webpack");
 const nextConfig = {
   reactStrictMode: true,
-  basePath: "/pmkisan",
-  assetPrefix: "/pmkisan",
+  basePath: "/farmer-database",
+  assetPrefix: "/farmer-database",
   images: {
     domains: ['himstaging1.hp.gov.in'], // Add your hostname here
   },

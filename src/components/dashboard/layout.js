@@ -32,6 +32,7 @@ import {
   getUserName,
   getUlb,
   getRoles,
+  getName,
 } from "../../utils/cookie";
 import { Verified } from "@mui/icons-material";
 import { set } from "lodash";
@@ -73,15 +74,19 @@ function Layout(props) {
   const [role, setRole] = useState("");
 
   let globalUserName = "";
+  let globalName = "";
   let globalRole = "";
 
   useEffect(() => {
     if (getUserName()) {
       globalUserName = JSON.parse(getUserName());
     }
+    if (getName()) {
+      globalName = JSON.parse(getName());
+    }
 
     if (globalUserName) {
-      setUsername(globalUserName);
+      setUsername(globalName);
     }
     console.log("Roles===", getRoles());
     if (getRoles()) {
